@@ -1,3 +1,3 @@
 # MyBatis-error
 
-this run at localhost:9090
+this run at http://localhost:9090
