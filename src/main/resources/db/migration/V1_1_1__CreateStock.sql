@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS stock;
+Create table Stock(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  sku_code VARCHAR(255) NOT NULL,
+  location VARCHAR(255) NOT NULL,
+  quantity MEDIUMINT NOT NULL,
+  update_datetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  insert_datetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TRIGGER my_trigger
+  BEFORE UPDATE
+  ON Stock
+  FOR EACH ROW CALL "org.h2.trigger.UpdatedAtTrigger";

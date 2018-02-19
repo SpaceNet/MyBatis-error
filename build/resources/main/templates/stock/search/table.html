@@ -1,0 +1,28 @@
+<div th:fragment="frag_table">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th><input type="hidden" name="_all_delete_checkbox"><input type="checkbox" name="all_delete_checkbox" value="0" id="all_delete_checkbox"></th>
+                    <th class="sortable"><a href="/stock/index?sort=building_name&amp;max=10&amp;order=asc" th:text="#{stock.building_name.label}"></a></th>
+                    <th class="sortable"><a href="/stock/index?sort=location&amp;max=10&amp;order=asc" th:text="#{stock.location.label}"></a></th>
+                    <th class="sortable"><a href="/stock/index?sort=sku_code&amp;max=10&amp;order=asc" th:text="#{stock.sku_code.label}"></a></th>
+                    <th class="sortable"><a href="/stock/index?sort=item_name&amp;max=10&amp;order=asc" th:text="#{stock.item_name.label}"></a></th>
+                    <th class="sortable"><a href="/stock/index?sort=delivery_code&amp;max=10&amp;order=asc" th:text="#{stock.delivery_code.label}"></a></th>
+                    <th class="sortable"><a href="/stock/index?sort=shipping_status&amp;max=10&amp;order=asc" th:text="#{stock.shipping_status.label}"></a></th>
+                    <th class="sortable"><a href="/stock/index?sort=stock_count&amp;max=10&amp;order=asc" th:text="#{stock.stock_count.label}"></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s_l : ${stockList}">
+                        <td><input type="hidden" name="_delete_checkbox"><input type="checkbox" name="delete_checkbox" value="0" id="delete_checkbox"></td>
+                        <td th:text="${s_l.building_name}"></td>
+                        <td th:text="${s_l.location}"></td>
+                        <td th:text="${s_l.sku_code}"></td>
+                        <td th:text="${ s_l.item_name }"></td>
+                        <td th:text="${ s_l.delivery_code }"></td>
+                        <td th:text="${ s_l.shipping_status }"></td>
+                        <td th:text="${ s_l.stock_count }"></td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
