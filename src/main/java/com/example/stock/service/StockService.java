@@ -1,14 +1,14 @@
 package com.example.stock.service;
 
 import java.io.Serializable;
-import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.stock.domain.model.Stock;
 
 @Service
 public interface StockService<ID extends Serializable> {
-	public Stock getItems(ID id);
-	public List<Stock> getAllItems();
+	public Page<Stock> getPages(Pageable pageable);
 }
