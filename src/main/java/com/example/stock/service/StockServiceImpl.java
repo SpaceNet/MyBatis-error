@@ -1,5 +1,8 @@
 package com.example.stock.service;
 
+import java.io.Serializable;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +17,6 @@ public class StockServiceImpl implements StockService {
 	
 	@Override
 	public Page<Stock> getPages(Pageable pageable){
-		return stockRepository.findPg(pageable);
+		return stockRepository.findPage(pageable);
 	}
 }

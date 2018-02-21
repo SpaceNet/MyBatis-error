@@ -9,9 +9,12 @@
         FROM
             stock
         LIMIT
-            10
+            #{pageSize}
         OFFSET
-            10
+            #{offset}
     </select>
-
+    
+    <select id="count" resultType="_long">
+        SELECT count(*) FROM stock
+    </select>
 </mapper>

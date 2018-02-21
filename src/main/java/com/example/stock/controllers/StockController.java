@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.stock.domain.model.Stock;
 import com.example.stock.service.StockService;
@@ -27,13 +27,14 @@ public class StockController {
 	}
 	
     @RequestMapping(value="/stock", method=RequestMethod.GET)
-	public String getPage(Model model, Pageable pageable) {
+	public ModelAndView getPage(ModelAndView mav, Pageable pageable) {
 		Page<Stock> stocksPage = stockService.getPages(pageable);
 		System.out.println(stocksPage);
-//        PageWrapper<Stock> page = new PageWrapper<Stock>(stocksPage, "/stock");
-//		System.out.println(page);
-		model.addAttribute("stockList", stocksPage.getContent());
-//        model.addAttribute("page", page);
-    		return "stock";
+        PageWrapper<Stock> page = new PageWrapper<Stock>(stocksPage, "/stock");
+		System.out.println(page);
+		mav.addObject("stockList", stocksPage.getContent());
+		mav.addObject("page", page);
+		mav.setViewName("stock/search/index");
+    		return mav;
     }
 }
